@@ -1,6 +1,4 @@
-# Using PPO to solve ARC Problem
-
-## 프로젝트 설명
+Using PPO to solve ARC Problem
 
 ## Environments
 ```bash
