@@ -1,12 +1,14 @@
-Using PPO to solve ARC Problem
+# Using PPO to solve ARC Problem
 
 ## Environments
 ```bash
 conda create --name your_env_name python=3.9
+```
 
 To install pacakges
 ```bash
 pip install -r requirements
+```
 
 Change the path in code.
 
