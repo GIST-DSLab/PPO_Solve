@@ -9,9 +9,9 @@ To learn more:
 - 사진
 
 ## Research Question
+
  RQ1: Learning a Single Task
  RQ2: Reasoning about Tasks Similar to Pre-Trained Task
- ---
  RQ3: Reasoning about Sub-Tasks of Pre-Trained Task
  RQ4: Learning Multiple Tasks Simultaneously 
  RQ5: Reasoning about Merged-Tasks of Pre-Trained Tasks
