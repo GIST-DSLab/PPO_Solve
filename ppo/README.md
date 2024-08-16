@@ -1,5 +1,6 @@
 # Enhancing Analogical Reasoning in the Abstraction and Reasoning Corpus via Model-Based RL
 The implementation of experiments comparing Proximal Policy Optimization (PPO) and DreamerV3 within the ARCLE environment.
+
 [paper](https://github.com/user-attachments/files/16637774/WorldModel_IJCAIW2024_May10_main12p.1.pdf)
 
 Code instructions are located within each algorithm's folder.
@@ -14,14 +15,13 @@ Code instructions are located within each algorithm's folder.
 
 ## Research Question
 
- RQ1: Learning a Single Task
- RQ2: Reasoning about Tasks Similar to Pre-Trained Task
- ---
- RQ3: Reasoning about Sub-Tasks of Pre-Trained Task
- RQ4: Learning Multiple Tasks Simultaneously 
- RQ5: Reasoning about Merged-Tasks of Pre-Trained Tasks
+RQ1: Learning a Single Task
+RQ2: Reasoning about Tasks Similar to Pre-Trained Task
+RQ3: Reasoning about Sub-Tasks of Pre-Trained Task
+RQ4: Learning Multiple Tasks Simultaneously 
+RQ5: Reasoning about Merged-Tasks of Pre-Trained Tasks
 
-In this work, we scope to RQ1 and RQ2.
+In this work, we focus on addressing Research Questions 1 and 2.
 
 ## Results
 
@@ -29,9 +29,7 @@ In this work, we scope to RQ1 and RQ2.
 ![image](https://github.com/user-attachments/assets/a462b685-a8a6-418c-8257-872c615e093d)
 
 - For complex tasks(Diagonal Flip), Model-Based RL can learn complex tasks, showing higher Accuracy and Sample Efficiency.
-
 - For simple tasks(Rotate and Horiontal Flip), both algorithms have no significant differences
-
 - DremerV3 have difficulty in learning N x N grid size tasks.
 
 ### RQ2: Reasoning about Tasks Similar to Pre-Trained Task
@@ -51,8 +49,8 @@ We reimplemented the experiments from the first implementation of PPO on ARCLE e
 - [code](https://github.com/ku-dmlab/arc_trajectory_generator)
 
 ### Mastering Diverse Domains through World Models (Dreamerv3)
-[paper](https://arxiv.org/pdf/2301.04104v1)
-[code](https://github.com/NM512/dreamerv3-torch)
+- [paper](https://arxiv.org/pdf/2301.04104v1)
+- [code](https://github.com/NM512/dreamerv3-torch)
 
 This is pythorch implementation of authors' DreamerV3 implementation 
 - [code](https://github.com/danijar/dreamerv3)
