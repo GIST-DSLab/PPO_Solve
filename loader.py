@@ -100,11 +100,11 @@ class EntireSelectionLoader(ARCLoader):
         self.data_dir = os.path.join(current_dir, 'dataset')
         self.config_path = os.path.join(current_dir, 'ppo/ppo_config_entsel.yaml')
         config = load_config(self.config_path)
-        train_task = config['train']['task']
-        eval_task = config['eval']['task']
+        self.train_task = config['train']['task']
+        self.eval_task = config['eval']['task']
 
-        self.train_file = os.path.join(self.data_dir, f'train_{train_task}.pkl')
-        self.eval_file = os.path.join(self.data_dir, f'eval_{eval_task}.pkl')
+        self.train_file = os.path.join(self.data_dir, f'train_{self.train_task}.pkl')
+        self.eval_file = os.path.join(self.data_dir, f'eval_{self.eval_task}.pkl')
         super().__init__()
 
     
