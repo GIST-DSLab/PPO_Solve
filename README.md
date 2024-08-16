@@ -31,7 +31,7 @@ Choose the task within 150, 179, 241, 380
 380 - 3 x 3 CCW rotate task
 
 
-<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="display: flex; flex-direction: row; justify-content: space-around;">
   <div>
     <img width="173" alt="150" src="https://github.com/user-attachments/assets/5f68b706-51af-4416-977e-51044cf36ada">
   </div>
