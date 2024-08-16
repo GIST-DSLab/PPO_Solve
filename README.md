@@ -1,7 +1,7 @@
 # Using PPO to solve ARC Problem
 Train ARC Tasks (number: 150, 179, 241, 380) with PPO agent.
 
-Proximal Policy Optimization Algorithms (PPO) [pdf](https://arxiv.org/abs/1707.06347)
+Proximal Policy Optimization Algorithms (PPO) [[pdf](https://arxiv.org/abs/1707.06347)]
 
 
 
