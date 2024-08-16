@@ -36,7 +36,6 @@ In this work, we focus on addressing Research Questions 1 and 2.
 ![image](https://github.com/user-attachments/assets/a1cacf44-fe6c-4e24-baf5-d97da135fb03)
 
 - DreamerV3 successfully adapted to unseen grid sizes that have a share rule.
-
 - Both algorithms are struggled with learning N x N Diagonal Flip Tasks, leading to poor performance in 3 x 3 Diagonal Flip adaptation.
 
 ## Algorithm Details
@@ -45,12 +44,10 @@ In this work, we focus on addressing Research Questions 1 and 2.
 - [paper](https://arxiv.org/pdf/1707.06347)
 - [code](https://github.com/DLR-RM/stable-baselines3/blob/master/stable_baselines3/ppo/ppo.py)
 
-We reimplemented the experiments from the first implementation of PPO on ARCLE environments.
-- [code](https://github.com/ku-dmlab/arc_trajectory_generator)
+We reimplemented the experiments from the [first implementation](https://github.com/ku-dmlab/arc_trajectory_generator) of PPO on ARCLE environments.
 
 ### Mastering Diverse Domains through World Models (Dreamerv3)
 - [paper](https://arxiv.org/pdf/2301.04104v1)
 - [code](https://github.com/NM512/dreamerv3-torch)
 
-This is pythorch implementation of authors' DreamerV3 implementation 
-- [code](https://github.com/danijar/dreamerv3)
+This is pythorch implementation of [authors' DreamerV3 implementation](https://github.com/danijar/dreamerv3)
