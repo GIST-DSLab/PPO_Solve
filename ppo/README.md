@@ -1,12 +1,27 @@
 # Enhancing Analogical Reasoning in the Abstraction and Reasoning Corpus via Model-Based RL
-A implementation of comparing PPO and Dreamerv3 on ARCLE environment.
+The implementation of experiments comparing Proximal Policy Optimization (PPO) and DreamerV3 within the ARCLE environment.
 
-To learn more:
+
+
+Proximal Policy Optimization (PPO)
+- [paper](https://arxiv.org/pdf/1707.06347)
+- [code](https://github.com/DLR-RM/stable-baselines3/blob/master/stable_baselines3/ppo/ppo.py)
+
+We reimplemented the experiments from the first implementation of PPO on ARCLE environments.
+- [code](https://github.com/ku-dmlab/arc_trajectory_generator)
+
+Mastering Diverse Domains through World Models (Dreamerv3)
+[paper](https://arxiv.org/pdf/2301.04104v1)
+[code](https://github.com/NM512/dreamerv3-torch)
+
+This is pythorch implementation of authors' DreamerV3 implementation 
+- [code]
+
 
 ## Experimental setting
 - Actions - We used 5 operation, and entire selection
 - Tasks - We selected 4 tasks that can be solved with entire selection
-- 사진
+- 사진`
 
 ## Research Question
 
