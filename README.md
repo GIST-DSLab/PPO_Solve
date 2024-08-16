@@ -34,15 +34,12 @@ Choose the task within 150, 179, 241, 380
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
   <div>
     <img width="173" alt="150" src="https://github.com/user-attachments/assets/5f68b706-51af-4416-977e-51044cf36ada">
-    <p>241 - 3x3 diagonal flip task</p>
   </div>
   <div>
     <img width="171" alt="380" src="https://github.com/user-attachments/assets/a55c2f2b-22f4-41c5-8942-8acd531f5685">
-    <p>179 - nxn diagonal flip task</p>
   </div>
   <div>
     <img width="170" alt="179" src="https://github.com/user-attachments/assets/ea04a9bd-4175-4ca5-9c51-f19682491e40">
-    <p>380 - 3x3 CCW rotate task</p>
   </div>
   <div>
     <img width="171" alt="380" src="https://github.com/user-attachments/assets/a55c2f2b-22f4-41c5-8942-8acd531f5685">
