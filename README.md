@@ -30,21 +30,13 @@ Choose the task within 150, 179, 241, 380
 
 380 - 3 x 3 CCW rotate task
 
-
-<div style="display: flex; flex-direction: row; justify-content: space-around;">
-  <div>
-    <img width="173" alt="150" src="https://github.com/user-attachments/assets/5f68b706-51af-4416-977e-51044cf36ada">
-  </div>
-  <div>
-    <img width="171" alt="380" src="https://github.com/user-attachments/assets/a55c2f2b-22f4-41c5-8942-8acd531f5685">
-  </div>
-  <div>
-    <img width="170" alt="179" src="https://github.com/user-attachments/assets/ea04a9bd-4175-4ca5-9c51-f19682491e40">
-  </div>
-  <div>
-    <img width="171" alt="380" src="https://github.com/user-attachments/assets/a55c2f2b-22f4-41c5-8942-8acd531f5685">
-  </div>
-</div>
+<p float="left">
+  <img src="https://github.com/user-attachments/assets/5f68b706-51af-4416-977e-51044cf36ada" width="170" />
+  <img src="https://github.com/user-attachments/assets/a55c2f2b-22f4-41c5-8942-8acd531f5685" width="170" /> 
+  <img src="https://github.com/user-attachments/assets/ea04a9bd-4175-4ca5-9c51-f19682491e40" width="170" />
+  <img src="https://github.com/user-attachments/assets/a55c2f2b-22f4-41c5-8942-8acd531f5685" width="170" />
+  
+</p>
 
 
 # Acknowledge
