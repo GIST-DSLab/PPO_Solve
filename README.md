@@ -35,4 +35,4 @@ Choose the task within 150, 179, 241, 380
 
 # Acknowledge
 
-This code is reimplemented based on https://github.com/ku-dmlab/arc_trajectory_generator
+This implementation is based on the work found at https://github.com/ku-dmlab/arc_trajectory_generator.
