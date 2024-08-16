@@ -16,9 +16,13 @@ Code instructions are located within each algorithm's folder.
 ## Research Question
 
 RQ1: Learning a Single Task
+
 RQ2: Reasoning about Tasks Similar to Pre-Trained Task
+
 RQ3: Reasoning about Sub-Tasks of Pre-Trained Task
+
 RQ4: Learning Multiple Tasks Simultaneously 
+
 RQ5: Reasoning about Merged-Tasks of Pre-Trained Tasks
 
 In this work, we focus on addressing Research Questions 1 and 2.
