@@ -23,8 +23,11 @@ python3 run.py train.task=150 eval.task=150
 Choose the task within 150, 179, 241, 380
 
 150 - 3 x 3 Horizontal flip task
+
 179 - N x N diagonal flip task
+
 241 - 3 x 3 diagonal flip task
+
 380 - 3 x 3 CCW rotate task
 
 
