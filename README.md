@@ -1,10 +1,5 @@
 # Using PPO to solve ARC Problem
-Train ARC Tasks (number: 150, 179, 241, 380) with PPO agent.
-
-Proximal Policy Optimization Algorithms (PPO) [[pdf](https://arxiv.org/abs/1707.06347)]
-
-
-
+Train ARC Tasks (number: 150, 179, 241, 380) with PPO ([Proximal Policy Optimization Algorithms](https://arxiv.org/abs/1707.06347)) agent.
 
 # Instructions
 
@@ -29,7 +24,7 @@ pip install -r requirements.txt
 
 ## How to run
 
-To run the example task (train task 150, eval 150)
+To run the example code (train task 150, eval 150)
 
 ```bash
 python3 run.py train.task=150 eval.task=150
