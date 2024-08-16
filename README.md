@@ -1,22 +1,37 @@
 # Using PPO to solve ARC Problem
-Train ARC Task (number: 150, 179, 241, 380) with PPO agent.
+Train ARC Tasks (number: 150, 179, 241, 380) with PPO agent.
+
+Proximal Policy Optimization Algorithms (PPO) [pdf](https://arxiv.org/abs/1707.06347)
+
+
+
 
 # Instructions
 
 ## Environments
+
+1. Create a new environment
+
 ```bash
 conda create --name your_env_name python=3.9
 ```
 
-To install pacakges
+2. Activate the environment:
+```bash
+conda activate your_env_name
+```
+
+3. Install pacakges
+
 ```bash
 pip install -r requirements.txt
 ```
 
-## How to use
+## How to run
 
 To run the example task (train task 150, eval 150)
-```bash
+
+    ```bash
 python3 run.py train.task=150 eval.task=150
 ```
 
