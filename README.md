@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 To run the example task (train task 150, eval 150)
 
-    ```bash
+```bash
 python3 run.py train.task=150 eval.task=150
 ```
 
