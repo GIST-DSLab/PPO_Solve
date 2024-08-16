@@ -1,4 +1,4 @@
-# Enhancing Analogical Reasoning in the Abstraction and Reasoning Corpus via Model-Based RL [pdf](https://github.com/user-attachments/files/16637774/WorldModel_IJCAIW2024_May10_main12p.1.pdf)
+# Enhancing Analogical Reasoning in the Abstraction and Reasoning Corpus via Model-Based RL [[PDF](https://github.com/user-attachments/files/16637774/WorldModel_IJCAIW2024_May10_main12p.1.pdf)]
 The implementation of experiments comparing Proximal Policy Optimization (PPO) and DreamerV3 within the ARCLE environment.
 
 Code instructions are located within each algorithm's folder.
