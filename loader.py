@@ -95,13 +95,13 @@ class MiniARCLoader(MiniARCLoader):
         return dat
 
 class EntireSelectionLoader(ARCLoader):
-    def __init__(self) -> None:
+    def __init__(self, train_task: str, eval_task: str) -> None:
         current_dir = os.path.dirname(os.path.abspath(__file__))
         self.data_dir = os.path.join(current_dir, 'dataset')
         self.config_path = os.path.join(current_dir, 'ppo/ppo_config_entsel.yaml')
         config = load_config(self.config_path)
-        self.train_task = config['train']['task']
-        self.eval_task = config['eval']['task']
+        self.train_task = train_task or config['train']['task']
+        self.eval_task = eval_task or config['eval']['task']
 
         self.train_file = os.path.join(self.data_dir, f'train_{self.train_task}.pkl')
         self.eval_file = os.path.join(self.data_dir, f'eval_{self.eval_task}.pkl')

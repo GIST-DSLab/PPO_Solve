@@ -7,6 +7,8 @@ from OperationOnly import OpOnlyenv
 from arcle.loaders import Loader
 from loader import SizeConstrainedLoader, EntireSelectionLoader
 import wandb
+import argparse
+
 
 from ppo.ppo import learn
 
@@ -41,10 +43,12 @@ class TestLoader(Loader):
 @hydra.main(config_path="ppo", config_name="ppo_config_entsel")
 def main(cfg: DictConfig) -> None:
     # wandb.init(
-    #     entity = "",
-    #     project="",
+    #     entity = "qhddl2650",
+    #     project="arc_traj_gen",
     #     config=OmegaConf.to_container(cfg)
     # )
+
+    
     if cfg.env.use_arc:
         env = gym.make(
             'ARCLE/O2ARCv2Env-v0', 
@@ -55,7 +59,7 @@ def main(cfg: DictConfig) -> None:
         
     elif cfg.env.ent_sel:
         env = OpOnlyenv(
-                data_loader=EntireSelectionLoader(),
+                data_loader=EntireSelectionLoader(train_task=cfg.train.task, eval_task=cfg.eval.task),
                 max_trial=3,
                 max_grid_size=(cfg.env.grid_x, cfg.env.grid_y),
                 colors=cfg.env.num_colors

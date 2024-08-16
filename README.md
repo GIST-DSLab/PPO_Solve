@@ -1,4 +1,7 @@
 # Using PPO to solve ARC Problem
+Train ARC Task (number: 150, 179, 241, 380) with PPO agent.
+
+# Instructions
 
 ## Environments
 ```bash
@@ -7,23 +10,30 @@ conda create --name your_env_name python=3.9
 
 To install pacakges
 ```bash
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
-Change the path in code.
+## How to use
 
-change wandb id to yours, or delete.
-in run.py line OOO
+To run the example task (train task 150, eval 150)
+```bash
+python3 run.py train.task=150 eval.task=150
+```
 
-
-change the path to your directory.
-in ppo.py line OOO
-in loader.py line 111
-
-change the task number
-in loader.py line 112, 113
+Choose the task within 150, 179, 241, 380
 
 150 - 3x3 Horizontal flip task
+사진
+
 241 - 3x3 diagonal flip task
+사진
+
 179 - nxn diagonal flip task
+사진
+
 380 - 3x3 CCW rotate task
+사진
+
+# Acknowledge
+
+This code is reimplemented based on https://github.com/ku-dmlab/arc_trajectory_generator
