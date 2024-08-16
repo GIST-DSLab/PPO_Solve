@@ -22,17 +22,20 @@ train:
   noptepochs: 4
   cliprange: 0.1
   save_interval: 0
-  total_timesteps: 51200
+  total_timesteps: 102400
   gpu_num: 1
   weight_decay: 0.1
   beta1: 0.9
   beta2: 0.95
   cliprew: 10
   update_actor_after: 10
+  task: 150
 
 eval:
  nenvs: 1
+ task: 150
 
+ 
 model:
   n_layer: 12
   n_head: 16

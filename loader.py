@@ -6,28 +6,16 @@ from numpy.typing import NDArray
 
 from arcle.loaders import ARCLoader
 from arcle.loaders import MiniARCLoader
-
-from arcle.envs.arcenv import AbstractARCEnv
 from arcle.loaders import ARCLoader
 from gymnasium.core import ObsType, ActType
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib
-import pandas as pd
 import os
-from io import BytesIO
-import gym
 import copy
-import pdb
-from PIL import Image
-import random
-import torch
 from numpy.typing import NDArray
-from typing import Dict,Optional,Union,Callable,List, Tuple, SupportsFloat, SupportsInt, SupportsIndex, Any
-from functools import wraps
-from numpy import ma
+from typing import List
 import json
 import pickle
+import yaml
 
 
 class SizeConstrainedLoader(ARCLoader):
@@ -108,7 +96,17 @@ class MiniARCLoader(MiniARCLoader):
 
 class EntireSelectionLoader(ARCLoader):
     def __init__(self) -> None:
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        self.data_dir = os.path.join(current_dir, 'dataset')
+        self.config_path = os.path.join(current_dir, 'ppo/ppo_config_entsel.yaml')
+        config = load_config(self.config_path)
+        train_task = config['train']['task']
+        eval_task = config['eval']['task']
+
+        self.train_file = os.path.join(self.data_dir, f'train_{train_task}.pkl')
+        self.eval_file = os.path.join(self.data_dir, f'eval_{eval_task}.pkl')
         super().__init__()
+
     
     def parse(self, **kwargs):
         dat = []
@@ -117,43 +115,39 @@ class EntireSelectionLoader(ARCLoader):
         to: List[NDArray] = []
         ei: List[NDArray] = []
         eo: List[NDArray] = []
+        
+        print("path:", os.path)
+        if not os.path.exists(self.train_file):
+            for p in self._pathlist:
 
-        if not os.path.exists('/home/jovyan/ppo_cat/dataset/train_150.pkl'):
-            for d in problem['train']:
-                    inp = np.array(d['input'],dtype=np.uint8)
-                    oup = np.array(d['output'],dtype=np.uint8)
-                    ti.append(inp)
-                    to.append(oup)
+                with open(p) as fp:
+                    problem = json.load(fp)
+                    for d in problem['train']:
+                        ti.append(np.array(d['input'],dtype=np.uint8))
+                        to.append(np.array(d['output'],dtype=np.uint8))
         else:
-            with open('/home/jovyan/ppo_cat/dataset/train_150.pkl', 'rb') as f:
+            with open(self.train_file, 'rb') as f:
                 full_list = pickle.load(f)                    
-            ti = full_list[0] # list type으로 바꾸기
+            ti = full_list[0]
             to = full_list[1]
 
-        if not os.path.exists('/home/jovyan/ppo_cat/dataset/eval_150.pkl'):
-            while len(ei) < 100:
-                grid = np.random.randint(0, 10, size=(3, 3))
-                if not any((grid == x).all() for x in ti):
-                    ei.append(grid)
-                    transformed_grid = horizontal_flip(rotate_right(grid))
-                    eo.append(transformed_grid)
-                else:
-                    continue
-            ei = np.array(ei)
-            eo = np.array(eo)
-            full_list = np.stack((ei, eo))
-            np.save(f'/home/dslab/arcle-trajectory/augmented_task/Task179/eval_diagonal.npy', full_list)
+        if not os.path.exists(self.eval_file):
+            for p in self._pathlist:
+
+                with open(p) as fp:
+                    problem = json.load(fp)
+                    for d in problem['test']:
+                        ei.append(np.array(d['input'],dtype=np.uint8))
+                        eo.append(np.array(d['output'],dtype=np.uint8))
         else:
-            with open('/home/jovyan/ppo_cat/dataset/eval_150.pkl', 'rb') as f:
+            with open(self.eval_file, 'rb') as f:
                 full_list = pickle.load(f)                    
-            ei = full_list[0] # list type으로 바꾸기
+            ei = full_list[0]
             eo = full_list[1]
 
         #desc = {'id': os.path.basename(fp.name).split('.')[0]}
-        desc = {'id': 'aug150'}
+        desc = {'id': f'{self.train_task}_{self.eval_task}'}
         dat.append((ti,to,ei,eo,desc))
-            
-
 
     
         print(len(ti), len(to), len(ei), len(eo))
@@ -203,28 +197,9 @@ def horizontal_flip(state):
             temp.append(temp_state[i][2-j])
         rotate_state.append(temp)
     return rotate_state
-    
 
-# if not os.path.exists(f'/home/dslab/arcle-trajectory/augmented_task/train_diagonal.pkl'):
-# ti.append(np.array([np.array(np.random.randint(0, 10, size=(3, 3)).tolist()) for _ in range(1000)])) # 타입 체크
-# to.append(np.array([np.array(horizontal_flip(rotate_right(target))) for target in ti[0]]))
-# full_list = np.stack((ti[0], to[0]))
-# np.save(f'/home/dslab/arcle-trajectory/augmented_task/Task179/train_diagonal.npy', full_list)
-# ti = ti[0]
-# to = to[0]
+def load_config(config_path):
+    with open(config_path, 'r') as f:
+        config = yaml.safe_load(f)
 
-        # if mode == 'eval':
-        #     input_list = []
-        #     for  in range(self.aug_eval_num):
-        #         while True:
-        #             temp = np.random.randint(0, 10, size=(3, 3)).tolist()
-        #             if train_set == None or str(temp) not in train_set:
-        #                 input_list.append(np.array(temp))
-        #                 break
-        #     output_list = [np.array(horizontal_flip(rotate_right(target))) for target in input_list]
-                # else:                    
-                #     with open(f'/home/dslab/arcle-trajectory/augmented_task/train_diagonal.pkl', 'rb') as f:
-                #         full_list = pickle.load(f)      
-                #     ti = full_list[0] # list type으로 바꾸기
-                #     to = full_list[1]
-                    
+    return config

@@ -12,14 +12,17 @@ from cosine_annealing_warmup import CosineAnnealingWarmupRestarts
 import os
 from collections import OrderedDict
 from solver import solve
+
+
 def learn(cfg, env):
 
     tcfg = cfg.train
     device = get_device(tcfg.gpu_num - 1)
     policy = GPTPolicy(cfg, device).to(device)
-    model_state = torch.load("/home/jovyan/ppo_cat/data/task241-300k/saved_parameter_90.pth")
-    new_model_state = OrderedDict([(key.replace('_orig_mod.', ''), value) for key, value in model_state.items()])
-    policy.load_state_dict(new_model_state)
+    # if you want to train continuelly, you can load the model using the following code
+    # model_state = torch.load("/home/jovyan/ppo/data/task241-300k/saved_parameter_90.pth")
+    # new_model_state = OrderedDict([(key.replace('_orig_mod.', ''), value) for key, value in model_state.items()])
+    # policy.load_state_dict(new_model_state)
     policy = torch.compile(policy)
 
     nenvs = tcfg.nenvs
@@ -35,7 +38,7 @@ def learn(cfg, env):
                                           max_lr=5e-4,
                                           min_lr=5e-5,
                                           warmup_steps=500,
-                                          gamma=1.0)
+                                          gamma=1.0)    
     train_fn = get_train_fn(policy, optimizer, tcfg)
     act_fn = get_act_fn(policy)
 
@@ -81,7 +84,6 @@ def learn(cfg, env):
             steps += step
             if sum_reward > 1000:
                 success += 1
-            #어드밴티지, Q - V
 
         print("step", steps)
         print("episode_num", count)
@@ -116,14 +118,11 @@ def learn(cfg, env):
         
         # Index of each element of batch_size
         # Create the indices array
-        # 파라미터, 폴리시 업데이트.
         print("Training:")
         inds = np.arange(nbatch) # 3200
 
-        #액터를 언제부터 업데이트 할거냐. update_actor_after이후로 업데이트.
-        train_actor = update >= 1 #tcfg.update_actor_after
+        train_actor = update >= tcfg.update_actor_after
 
-        # 업데이트 에폭.
         for _ in trange(tcfg.noptepochs):
             # Randomize the indexes
 
@@ -195,13 +194,12 @@ def learn(cfg, env):
                 step=timestep
             )
             all_ep_rets = []
-
-            model_path = "/home/jovyan/ppo_cat/data/241-300k-to-150"
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            model_path = os.path.join(current_dir, '/dataset/data/test1')
 
             if update % 1 == 0:
-                # 해당 경로에 디렉터리가 없다면 생성
                 if not os.path.exists(model_path):
-                    os.makedirs(model_path)
+                    os.makedirs(model_path)     
                     torch.save(policy.state_dict(), "{}/saved_parameter_{}.pth".format(model_path, update))
                 else:
                     torch.save(policy.state_dict(), "{}/saved_parameter_{}.pth".format(model_path, update))

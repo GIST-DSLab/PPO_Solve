@@ -1,39 +1,15 @@
-from typing import List, SupportsFloat, SupportsInt, Tuple
-from ray.rllib.env.apis.task_settable_env import TaskSettableEnv, TaskType
 from arcle.envs import O2ARCv2Env
 from arcle.loaders import ARCLoader, Loader
-from collections import OrderedDict
-import gymnasium as gym
-from gymnasium import spaces
-
 import numpy as np
 
-from ray.tune.logger import pretty_print
-
-
-from arcle.envs.arcenv import AbstractARCEnv
 from arcle.loaders import ARCLoader
 from gymnasium.core import ObsType, ActType
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib
-import pandas as pd
-import os
-from io import BytesIO
-import gym
-import copy
-import pdb
-from PIL import Image
-import random
-import torch
-from numpy.typing import NDArray
-from typing import Dict,Optional,Union,Callable,List, Tuple, SupportsFloat, SupportsInt, SupportsIndex, Any
+from typing import Dict,Optional, Tuple, SupportsFloat, SupportsInt, SupportsIndex, Any
 from functools import wraps
-from numpy import ma
-import json
 
 
-class action11env(O2ARCv2Env):
+class OpOnlyenv(O2ARCv2Env):
     
     def __init__(self, data_loader: Loader = ARCLoader(), max_grid_size: Tuple[SupportsInt, SupportsInt] = (30,30), colors: SupportsInt = 10, max_trial: SupportsInt = -1, render_mode: str = None, render_size: Tuple[SupportsInt, SupportsInt] = None) -> None:
         super().__init__(data_loader, max_grid_size, colors, max_trial, render_mode, render_size)
@@ -137,29 +113,3 @@ class action11env(O2ARCv2Env):
         self.last_action_op = op
         self.last_action = action
         self.operations[op](state,action)
-
-
-
-    # #TaskSettableEnv API
-    # def sample_tasks(self, n_tasks: int) -> List[TaskType]:
-    #     return np.random.choice(len(self.loader.data),n_tasks,replace=False)
-
-    # def get_task(self) -> TaskType:
-    #     return super().get_task()
-    
-    # def set_task(self, task: TaskType) -> None:
-    #     self.reset_options = {
-    #         'adaptation': True, # Default is true (adaptation first!). To change this mode, call 'post_adaptation()'
-    #         'prob_index': task
-    #     }
-    #     super().reset(options=self.reset_options)
-
-    # def init_adaptation(self):
-    #     self.adaptation = True
-    #     self.reset_options['adaptation'] = True
-    #     super().reset(options=self.reset_options)
-        
-    # def post_adaptation(self):
-    #     self.adaptation = False
-    #     self.reset_options['adaptation'] = False
-    #     super().reset(options=self.reset_options)

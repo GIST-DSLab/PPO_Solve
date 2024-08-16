@@ -7,6 +7,7 @@ dm_tree
 wandb
 hydra-core
 torchvision
+git+https://github.com/katsura-jp/pytorch-cosine-annealing-with-warmup.git
 torch
 torch==2.2.2
 torchvision==0.17.2

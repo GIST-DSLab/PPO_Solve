@@ -254,26 +254,7 @@ class Runner:
 
                 # Take actions in env and look the results
                 # Infos contains a ton of useful informations
-                """
-                (grid, grid_dim, selected, clip, clip_dim, terminated, trials_remain, active,
-                 object, object_sel, object_dim, object_pos, background, rotation_parity, env_reward) = batch_act(
-                    self.input[-1].astype(np.uint8), self.input_dim[-1], self.answer[-1].astype(np.uint8), self.answer_dim[-1],
-                    self.grid[-1].astype(np.uint8), self.grid_dim[-1], self.selected[-1].astype(bool), self.clip[-1].astype(np.uint8), 
-                    self.clip_dim[-1], self.terminated[-1], self.trials_remain[-1], 
-                    self.active[-1], self.object[-1].astype(np.uint8), self.object_sel[-1].astype(np.uint8), self.object_dim[-1], 
-                    self.object_pos[-1], self.background[-1].astype(np.uint8), self.rotation_parity[-1], 
-                    selection.astype(bool), operation
-                )"""
-
-                # (grid, grid_dim, selected, clip, clip_dim, terminated, trials_remain, active,
-                #  object, object_sel, object_dim, object_pos, background, rotation_parity, env_reward) = batch_act_env(self.env,
-                #     self.input[-1].astype(np.uint8), self.input_dim[-1], self.answer[-1].astype(np.uint8), self.answer_dim[-1],
-                #     self.grid[-1].astype(np.uint8), self.grid_dim[-1], self.selected[-1].astype(bool), self.clip[-1].astype(np.uint8), 
-                #     self.clip_dim[-1], self.terminated[-1], self.trials_remain[-1], 
-                #     self.active[-1], self.object[-1].astype(np.uint8), self.object_sel[-1].astype(np.uint8), self.object_dim[-1], 
-                #     self.object_pos[-1], self.background[-1].astype(np.uint8), self.rotation_parity[-1], 
-                #     selection.astype(bool), operation
-                # )
+                
                 (grid, grid_dim, selected, clip, clip_dim, terminated, trials_remain, active,
                  object, object_sel, object_dim, object_pos, background, rotation_parity, env_reward) = batch_act_env(self.env,
                     self.input[-1].astype(np.uint8), self.input_dim[-1], self.answer[-1].astype(np.uint8), self.answer_dim[-1],
