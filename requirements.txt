@@ -16,3 +16,4 @@ scikit-image
 matplotlib
 tqdm
 lz4
+numpy==1.26.4
