@@ -165,34 +165,34 @@ def learn(cfg, env):
             ev_aux_rew = max(1 - np.var(npy(norm_rew) - npy(rpred))/np.var(npy(norm_rew)), -1)
             ev_aux_rew_on_rtm1 = max(1 - np.var(npy(norm_rew) - npy(rpred))/np.var(npy(norm_rew) - npy(rtm1_pred)), -1)
             acc_aux_gtp1 = (npy(gpred).argmax(2) == npy(gtp1)).mean()
-            wandb.log(
-                {
-                    "rollout/operation": npy(batch_ob_acs_dic["operation"]),
-                    "misc/serial_timesteps": update * tcfg.nsteps,
-                    "misc/nupdates": update,
-                    "misc/total_timesteps": update * nbatch, 
-                    "explained_variance": float(ev),
-                    "explained_variance_aux_rtm1": float(ev_aux_rtm1),
-                    "explained_variance_aux_rew": float(ev_aux_rew),
-                    "explained_variance_aux_rew_on_rtm1": float(ev_aux_rew_on_rtm1),
-                    "acc_aux_gtp1": float(acc_aux_gtp1),
-                    'eprewmean': safemean(all_ep_rets),
-                    'success_ts': safemean(batch_success_ts),
-                    'success_rate': safemean(np.array(batch_success_ts) > 0),
-                    'lr': scheduler.get_lr()[0],
-                    'loss/loss': lossvals[0],
-                    'loss/pg_loss': lossvals[1],
-                    'loss/vf_loss': lossvals[2],
-                    'loss/entropy_loss': lossvals[3],
-                    'loss/aux_loss_rtm1': lossvals[4],
-                    'loss/aux_loss_rew': lossvals[5],
-                    'loss/aux_loss_gtp1': lossvals[6],
-                    'loss/approxkl': lossvals[7],
-                    'loss/clipfrac': lossvals[8],
-                    'train_accuracy': train_accuracy,
-                } | logged,
-                step=timestep
-            )
+            # wandb.log(
+            #     {
+            #         "rollout/operation": npy(batch_ob_acs_dic["operation"]),
+            #         "misc/serial_timesteps": update * tcfg.nsteps,
+            #         "misc/nupdates": update,
+            #         "misc/total_timesteps": update * nbatch, 
+            #         "explained_variance": float(ev),
+            #         "explained_variance_aux_rtm1": float(ev_aux_rtm1),
+            #         "explained_variance_aux_rew": float(ev_aux_rew),
+            #         "explained_variance_aux_rew_on_rtm1": float(ev_aux_rew_on_rtm1),
+            #         "acc_aux_gtp1": float(acc_aux_gtp1),
+            #         'eprewmean': safemean(all_ep_rets),
+            #         'success_ts': safemean(batch_success_ts),
+            #         'success_rate': safemean(np.array(batch_success_ts) > 0),
+            #         'lr': scheduler.get_lr()[0],
+            #         'loss/loss': lossvals[0],
+            #         'loss/pg_loss': lossvals[1],
+            #         'loss/vf_loss': lossvals[2],
+            #         'loss/entropy_loss': lossvals[3],
+            #         'loss/aux_loss_rtm1': lossvals[4],
+            #         'loss/aux_loss_rew': lossvals[5],
+            #         'loss/aux_loss_gtp1': lossvals[6],
+            #         'loss/approxkl': lossvals[7],
+            #         'loss/clipfrac': lossvals[8],
+            #         'train_accuracy': train_accuracy,
+            #     } | logged,
+            #     step=timestep
+            # )
             all_ep_rets = []
             current_dir = os.path.dirname(os.path.abspath(__file__))
             model_path = os.path.join(current_dir, '/dataset/data/test1')
