@@ -43,8 +43,8 @@ class TestLoader(Loader):
 @hydra.main(config_path="ppo", config_name="ppo_config_entsel")
 def main(cfg: DictConfig) -> None:
     # wandb.init(
-    #     entity = "qhddl2650",
-    #     project="arc_traj_gen",
+    #     entity = "",
+    #     project="",
     #     config=OmegaConf.to_container(cfg)
     # )
 
