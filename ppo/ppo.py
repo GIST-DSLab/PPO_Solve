@@ -195,7 +195,7 @@ def learn(cfg, env):
             # )
             all_ep_rets = []
             current_dir = os.path.dirname(os.path.abspath(__file__))
-            model_path = os.path.join(current_dir, '/dataset/data/test1')
+            model_path = os.path.join(current_dir, 'data/test1')
 
             if update % 1 == 0:
                 if not os.path.exists(model_path):
@@ -205,12 +205,12 @@ def learn(cfg, env):
                     torch.save(policy.state_dict(), "{}/saved_parameter_{}.pth".format(model_path, update))
 
                 _, _, _, _, _, accuarcy  = solve(cfg, env, update, model_path)
-                wandb.log(
-                    {  
-                        "eval_accuarcy": accuarcy,
-                    },
-                    step=timestep
-                )
+                # wandb.log(
+                #     {  
+                #         "eval_accuarcy": accuarcy,
+                #     },
+                #     step=timestep
+                # )
 
 # Avoid division error when calculate the mean (in our case if epinfo is empty returns np.nan, not return an error)
 def safemean(xs):
